@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#005050"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/owner_settings_stallName"
+        android:text="Settings"
+        android:textSize="30sp"
+        android:textColor="#00CCFF"
+        android:fontFamily="cursive"
+        android:layout_marginLeft="15sp"
+        android:layout_above="@id/buttonStorageLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/back"
+        android:text="BACK"
+        android:layout_marginRight="15sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/buttonStorageLayout"
+        android:background="#FFFFFF"
+        android:layout_margin="15sp"
+        android:layout_below="@id/back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="5"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0sp"
+                android:layout_height="match_parent"
+                android:weightSum="2"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/temp_username"
+                    android:layout_weight="1"
+                    android:text="@string/edit_username"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginTop="15sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0sp" />
+                <TextView
+                    android:id="@+id/settings_username"
+                    android:text="Username"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10sp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/settings_usernameButton"
+                android:text="EDIT"
+                android:layout_marginTop="20sp"
+                android:layout_weight="1"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0sp"
+                android:layout_height="match_parent"
+                android:weightSum="2"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/temp_password"
+                    android:layout_weight="1"
+                    android:text="@string/edit_password"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginTop="15sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0sp" />
+                <TextView
+                    android:id="@+id/settings_password"
+                    android:text="Password"
+                    android:textSize="15sp"
+                    android:inputType="textPassword"
+                    android:layout_marginLeft="10sp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/settings_passwordButton"
+                android:text="EDIT"
+                android:layout_marginTop="20sp"
+                android:layout_weight="1"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0sp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="2">
+                <TextView
+                    android:id="@+id/temp_stallName"
+                    android:layout_weight="1"
+                    android:text="@string/edit_stallname"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginTop="15sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0sp" />
+                <TextView
+                    android:id="@+id/settings_stallName"
+                    android:text="Stall Name"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10sp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/settings_stallNameButton"
+                android:text="EDIT"
+                android:layout_marginTop="20sp"
+                android:layout_weight="1"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0sp">
+        </Space>
+
+        <Button
+            android:id="@+id/settings_deleteAccountButton"
+            android:text="@string/delete_account"
+            android:background="#FF0000"
+            android:layout_marginBottom="20sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_width="150sp"
+            android:layout_height="0sp" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

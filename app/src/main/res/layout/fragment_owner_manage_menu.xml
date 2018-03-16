@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#156255"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/stall_name_holder"
+        android:text="STALL_NAME"
+        android:textSize="30sp"
+        android:textColor="#00CCFF"
+        android:fontFamily="cursive"
+        android:layout_marginLeft="15sp"
+        android:layout_above="@id/manage_menu_category_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/back"
+        android:text="BACK"
+        android:layout_marginRight="15sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/manage_menu_category_list_view"
+        android:layout_below="@id/back"
+        android:layout_above="@id/addButton_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@android:id/list"
+            android:background="#FFFFFF"
+            android:layout_marginTop="15sp"
+            android:layout_marginRight="15sp"
+            android:layout_marginLeft="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ListView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/addButton_Layout"
+        android:scaleY="1.5"
+        android:background="#FF0000"
+        android:layout_marginLeft="15sp"
+        android:layout_marginRight="15sp"
+        android:layout_marginBottom="12sp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/add_item_icon"
+            android:scaleX="0.2"
+            android:background="@drawable/ic_add_circle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#005050"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/current_orders"
+        android:text="Current Orders"
+        android:textSize="30sp"
+        android:textColor="#00CCFF"
+        android:fontFamily="cursive"
+        android:layout_marginLeft="15sp"
+        android:layout_above="@id/pendingOrdersListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/pendingOrdersListView"
+        android:layout_below="@id/back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@android:id/list"
+            android:background="#FFFFFF"
+            android:layout_margin="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ListView>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/back"
+        android:text="BACK"
+        android:layout_marginRight="15sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Fragment_Adventure</string>
+
+    <string-array name="Array_AccountType">
+        <item>Food User</item>
+        <item>Stall Owner</item>
+    </string-array>
+
+    <string-array name="Array_currentOrder">
+        <item>Finish</item>
+        <item>Cancel</item>
+    </string-array>
+
+    <string name="t_hist">Transaction\nHistory</string>
+    <string name="c_orders">Current\nOrders</string>
+    <string name="m_menu">Manage\nMenu</string>
+    <string name="delete_account">Delete\nAccount</string>
+    <string name="edit_stallname"><u>STALL NAME</u></string>
+    <string name="edit_username"><u>USERNAME</u></string>
+    <string name="edit_password"><u>PASSWORD</u></string>
+
+</resources>
