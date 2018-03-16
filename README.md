@@ -1,2 +1,2 @@
 # Fragment-Adventure
-This is similar to the cz2006_gamebreaker project, except with the integration of fragments.
+This is similar to the zNotAgain project, except with the integration of fragments.
