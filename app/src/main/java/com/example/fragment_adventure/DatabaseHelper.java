@@ -26,6 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String OWNER_COL_2 = "O_USERNAME";
     private static final String OWNER_COL_3 = "O_STALLNAME";
     private static final String OWNER_COL_4 = "O_PASSWORD";
+    private static final String OWNER_COL_5 = "O_POSTAL_CODE";
 
     // Stall-Owner Menu Table
     private static final String OWNER_MENU_TABLE_NAME = "owner_menu_table";
@@ -56,7 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String SQL_String = "CREATE TABLE " + USER_TABLE_NAME + "(" + USER_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT," + USER_COL_2 + " TEXT," + USER_COL_3 + " TEXT" + ")";
         sqLiteDatabase.execSQL(SQL_String);
-        SQL_String = "CREATE TABLE " + OWNER_TABLE_NAME + "(" + OWNER_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT," + OWNER_COL_2 + " TEXT," + OWNER_COL_3 + " TEXT," + OWNER_COL_4 + " TEXT" + ")";
+        SQL_String = "CREATE TABLE " + OWNER_TABLE_NAME + "(" + OWNER_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT," + OWNER_COL_2 + " TEXT," + OWNER_COL_3 + " TEXT," + OWNER_COL_4 + " TEXT," + OWNER_COL_5 + " TEXT" + ")";
         sqLiteDatabase.execSQL(SQL_String);
         SQL_String = "CREATE TABLE " + OWNER_MENU_TABLE_NAME + "(" + OWNER_MENU_COL_1 + " TEXT PRIMARY KEY," + OWNER_MENU_COL_2 + " TEXT" + ")";
         sqLiteDatabase.execSQL(SQL_String);
@@ -140,12 +141,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /////////////////////////////////////////// OWNER METHODS ///////////////////////////////////////////
-    public boolean addOwnerAccount(String username, String stall_name, String password){
+    public boolean addOwnerAccount(String username,String postal_code, String stall_name, String password){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(OWNER_COL_2,username);
         contentValues.put(OWNER_COL_3,stall_name);
         contentValues.put(OWNER_COL_4,password);
+        contentValues.put(OWNER_COL_5,postal_code);
         long result = sqLiteDatabase.insert(OWNER_TABLE_NAME,null,contentValues);
         return !(result == -1);
     }
@@ -209,6 +211,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return temp;
     }
 
+    public boolean updateOwnerAccountPostalCode(String postal_code, String stall_name){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(OWNER_COL_5,postal_code);
+        return (sqLiteDatabase.update(OWNER_TABLE_NAME,contentValues,"O_STALLNAME = ?",new String[]{stall_name}) > 0);
+    }
+
     public Integer deleteOwnerAccount(String stall_name){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Integer temp;
@@ -269,6 +278,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(OWNER_MENU_COL_2,stallName);
         long result = sqLiteDatabase.insert(OWNER_MENU_TABLE_NAME,null,contentValues);
         return !(result == -1);
+    }
+
+    public String getPostalCode(String stallName){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery("SELECT * FROM " + OWNER_TABLE_NAME + " WHERE " + OWNER_COL_3 + " = '" + stallName + "'",null);
+        StringBuffer buffer = new StringBuffer();
+        while(res.moveToNext()){
+            buffer.append(res.getString(4));
+        }
+        res.close();
+        return buffer.toString();
     }
     /////////////////////////////////////////// ORDER METHODS ///////////////////////////////////////////
     public String[] getUserArrayOfOrders(String username){

@@ -31,13 +31,24 @@
         android:layout_height="wrap_content" />
 
     <EditText
+        android:id="@+id/register_postalCode"
+        android:hint="Postal Code"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:inputType="text"
+        android:backgroundTint="#FFFFFF"
+        android:layout_below="@id/register_usernameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
         android:id="@+id/register_stallName"
         android:hint="Stall Name"
         android:textColorHint="#FFFFFF"
         android:textColor="#FFFFFF"
         android:inputType="text"
         android:backgroundTint="#FFFFFF"
-        android:layout_below="@id/register_usernameText"
+        android:layout_below="@id/register_postalCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

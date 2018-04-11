@@ -5,6 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/postal_code"
+        android:background="#FFFFFF"
+        android:hint="My Postal Code"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:layout_above="@id/locationButton"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/locationButton"
+        android:text="SET CURRENT LOCATION"
+        android:layout_above="@id/order"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/order"
         android:text="ORDER ^_^"

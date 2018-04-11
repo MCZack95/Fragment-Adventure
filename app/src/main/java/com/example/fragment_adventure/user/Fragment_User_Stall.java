@@ -1,12 +1,10 @@
 package com.example.fragment_adventure.user;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +17,7 @@ import android.widget.Toast;
 import com.example.fragment_adventure.DatabaseHelper;
 import com.example.fragment_adventure.R;
 import com.example.fragment_adventure.login.Activity_Main;
-
+import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Created by zNotAgain on 11/3/2018.
@@ -32,6 +30,7 @@ public class Fragment_User_Stall extends ListFragment implements AdapterView.OnI
     Button exitButton,nextButton;
     Adapter_User_Stall mAdapterStall;
     String[] strings;
+    LatLng defaultLatLng;
 
     @Nullable
     @Override
@@ -46,7 +45,7 @@ public class Fragment_User_Stall extends ListFragment implements AdapterView.OnI
         if(incomingBundle != null){
             final String stallMessage = incomingBundle.getString(Activity_Main.STALL_NAME);
             final String usernameMessage = incomingBundle.getString(Activity_Main.USER_NAME);
-
+            defaultLatLng = new LatLng(Double.parseDouble(incomingBundle.getString("Latitude")),Double.parseDouble(incomingBundle.getString("Longitude")));
             if(stallMessage != null){
                 mStallTextView.setText(stallMessage);
             }
@@ -65,7 +64,6 @@ public class Fragment_User_Stall extends ListFragment implements AdapterView.OnI
                 }
             });
         }
-
         return relativeLayout;
     }
 
@@ -74,7 +72,7 @@ public class Fragment_User_Stall extends ListFragment implements AdapterView.OnI
         super.onActivityCreated(savedInstanceState);
         myDb = new DatabaseHelper(getContext());
         strings = myDb.getArrayOfStall();
-        mAdapterStall = new Adapter_User_Stall(getContext(),R.layout.row_stall,strings);
+        mAdapterStall = new Adapter_User_Stall(getContext(),R.layout.row_stall,strings,defaultLatLng);
         setListAdapter(mAdapterStall);
         getListView().setOnItemClickListener(this);
     }
@@ -106,4 +104,5 @@ public class Fragment_User_Stall extends ListFragment implements AdapterView.OnI
         fragmentTransaction.addToBackStack(Activity_Main.FOOD_NAME);
         fragmentTransaction.commit();
     }
+
 }

@@ -15,4 +15,14 @@
         android:paddingLeft="30dp"
         android:layout_marginTop="30dp" />
 
+    <TextView
+        android:id="@+id/distanceTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20sp"
+        android:text="Small Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>

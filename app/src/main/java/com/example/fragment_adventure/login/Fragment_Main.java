@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fragment_adventure.MapsActivity;
 import com.example.fragment_adventure.owner.Activity_Owner;
 import com.example.fragment_adventure.user.Activity_User;
 import com.example.fragment_adventure.DatabaseHelper;
@@ -33,6 +34,7 @@ public class Fragment_Main extends Fragment {
     Button loginButton;
     TextView createAccountTextView;
     EditText editUserName,editPassword;
+    Button mapButton;
 
     @Nullable
     @Override
@@ -109,6 +111,15 @@ public class Fragment_Main extends Fragment {
                             }
                         });
                 mBuilder.show();
+            }
+        });
+
+        mapButton = relativeLayout.findViewById(R.id.toMap);
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goIntent = new Intent(v.getContext(), MapsActivity.class);
+                startActivity(goIntent);
             }
         });
         return relativeLayout;

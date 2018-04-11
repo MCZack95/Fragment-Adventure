@@ -1,6 +1,5 @@
 package com.example.fragment_adventure.owner;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -29,8 +28,8 @@ import com.example.fragment_adventure.login.Activity_Main;
 public class Fragment_Owner_Settings extends Fragment {
 
     DatabaseHelper myDb;
-    Button backButton,editUsernameButton,editPasswordButton,editStallNameButton,deleteAccountButton;
-    TextView textView,userName,passWord,stallName;
+    Button backButton,editUsernameButton,editPasswordButton,editStallNameButton,editPostalCodeButton,deleteAccountButton;
+    TextView textView,userName,passWord,stallName,postalCode;
 
     @Nullable
     @Override
@@ -43,10 +42,12 @@ public class Fragment_Owner_Settings extends Fragment {
         editUsernameButton = relativeLayout.findViewById(R.id.settings_usernameButton);
         editPasswordButton = relativeLayout.findViewById(R.id.settings_passwordButton);
         editStallNameButton = relativeLayout.findViewById(R.id.settings_stallNameButton);
+        editPostalCodeButton = relativeLayout.findViewById(R.id.settings_postalCodeButton);
         deleteAccountButton = relativeLayout.findViewById(R.id.settings_deleteAccountButton);
         userName = relativeLayout.findViewById(R.id.settings_username);
         passWord = relativeLayout.findViewById(R.id.settings_password);
         stallName = relativeLayout.findViewById(R.id.settings_stallName);
+        postalCode = relativeLayout.findViewById(R.id.settings_postalCode);
 
         Intent intent = getActivity().getIntent();
         final String stallNameMessage = intent.getStringExtra(Activity_Main.STALL_NAME);
@@ -55,6 +56,7 @@ public class Fragment_Owner_Settings extends Fragment {
             userName.setText(myDb.getOwnerUsername(stallNameMessage));
             passWord.setText(myDb.getOwnerPassword(stallNameMessage));
             stallName.setText(stallNameMessage);
+            postalCode.setText(myDb.getPostalCode(stallNameMessage));
             Log.e("START",stallNameMessage);
         }
 
@@ -190,6 +192,45 @@ public class Fragment_Owner_Settings extends Fragment {
                             }
                         });
                         tempBuilder.show();
+                    }
+                });
+                mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                mBuilder.show();
+            }
+        });
+
+        editPostalCodeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Intent intent = getActivity().getIntent();
+                final String stallNameMessage = intent.getStringExtra(Activity_Main.STALL_NAME);
+
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(v.getContext());
+                mBuilder.setCancelable(true);
+                mBuilder.setTitle("Set new Postal Code:");
+                // Set up the input
+                final EditText input = new EditText(v.getContext());
+                // Specify the type of input expected
+                input.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                mBuilder.setView(input);
+
+                // Set up the buttons
+                mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String m_Text = input.getText().toString();
+                        if(myDb.updateOwnerAccountPostalCode(m_Text,stallNameMessage)){
+                            Toast.makeText(v.getContext(),"Edit Successful",Toast.LENGTH_SHORT).show();
+                            postalCode.setText(m_Text);
+                        }
+                        else
+                            Toast.makeText(v.getContext(),"Edit Failed",Toast.LENGTH_SHORT).show();
                     }
                 });
                 mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
